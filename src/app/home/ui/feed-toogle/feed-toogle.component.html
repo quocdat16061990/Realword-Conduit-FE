@@ -1,0 +1,11 @@
+<ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+  <li [ngbNavItem]="1">
+    <button ngbNavLink>Global Feed</button>
+    <ng-template ngbNavContent>
+      <app-article-list></app-article-list>
+    </ng-template>
+  </li>
+</ul>
+
+
+

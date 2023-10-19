@@ -1,0 +1,31 @@
+.tagList {
+  padding: 5px 10px 10px 10px;
+  background: #f3f3f3;
+  border-radius: 4px;
+  &-title {
+    margin-bottom: 0.2rem;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #373a3c;
+  }
+  &-list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .tagList-listItem {
+      width: 35%;
+      &-link {
+        background-color: #818a91;
+        color: #fff !important;
+        font-size: 0.8rem;
+        padding: 0.5rem;
+        border-radius: 10rem;
+        white-space: nowrap;
+        margin-right: 3px;
+        margin-bottom: 0.2rem;
+        display: inline-block;
+      }
+    }
+  }
+}
