@@ -1,1 +1,45 @@
-<p>register works!</p>
+<div class="container register">
+  <div class="row justify-content-center">
+    <div class="col-md-6 justify-center">
+      <h1 class="register-title text-center">Sign In</h1>
+      <a class="register-link text-center" routerLink="login"
+        >Have An Account</a
+      >
+      <form [formGroup]="registerForm" class="register-form">
+        <div class="register-from-group form-group mb-3">
+          <input
+            type="text"
+            formControlName="username"
+            class="register-form-control form-control"
+            placeholder="Enter you username"
+          />
+        </div>
+        <div class="register-from-group form-group mb-3">
+          <input
+            type="text"
+            formControlName="email"
+            class="register-form-control form-control"
+            placeholder="Enter email"
+          />
+        </div>
+        <div class="register-from-group form-group">
+          <input
+            type="password"
+            formControlName="password"
+            class="register-form-control form-control"
+            placeholder="Password"
+          />
+        </div>
+        <div class="register-form-btn">
+          <button
+            type="submit"
+            class="btn btn-primary custom"
+            (click)="handleSubmit()"
+          >
+            Sign Up
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

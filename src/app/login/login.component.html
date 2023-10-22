@@ -1,1 +1,35 @@
-<p>login works!</p>
+<div class="container login">
+  <div class="row justify-content-center">
+    <div class="col-md-6 justify-center">
+      <h1 class="login-title text-center">Sign In</h1>
+      <a class="login-link text-center">Need An Account</a>
+      <form [formGroup]="loginForm" class="login-form">
+        <div class="login-from-group form-group mb-3">
+          <input
+            type="email"
+            class="login-form-control form-control"
+            formControlName="username"
+            placeholder="Enter username"
+          />
+        </div>
+        <div class="login-from-group form-group">
+          <input
+            type="password"
+            class="login-form-control form-control"
+            formControlName="password"
+            placeholder="Password"
+          />
+        </div>
+        <div class="login-form-btn">
+          <button
+            type="submit"
+            class="btn btn-primary custom"
+            (click)="handleSubmit()"
+          >
+            Sign In
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

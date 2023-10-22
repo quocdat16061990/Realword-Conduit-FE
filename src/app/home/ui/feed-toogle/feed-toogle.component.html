@@ -1,11 +1,17 @@
-<ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
-  <li [ngbNavItem]="1">
-    <button ngbNavLink>Global Feed</button>
-    <ng-template ngbNavContent>
-      <app-article-list></app-article-list>
-    </ng-template>
-  </li>
-</ul>
-
-
-
+<div class="tabs-container">
+  <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+    <li
+      class="tabs-item"
+      *ngFor="let tab of tabs; let idx = index"
+      [ngbNavItem]="idx + 1"
+    >
+      <a
+        class="tabs-item-link"
+        href="#"
+        ngbNavLink
+        (click)="selectTab(idx + 1)"
+        >{{ tab.title }}</a
+      >
+    </li>
+  </ul>
+</div>

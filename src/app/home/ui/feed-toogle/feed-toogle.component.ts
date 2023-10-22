@@ -29,4 +29,12 @@ export enum TabType {
 })
 export class FeedToogleComponent {
   active = 1;
+
+  tabs: TabItem[] = [
+    { title: 'Global Feed' }
+ ];
+
+  selectTab(tabId: number) {
+    this.active = tabId;
+  }
 }

@@ -10,11 +10,9 @@
     color: #373a3c;
   }
   &-list {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     .tagList-listItem {
-      width: 35%;
+      display: inline-block;
+      
       &-link {
         background-color: #818a91;
         color: #fff !important;

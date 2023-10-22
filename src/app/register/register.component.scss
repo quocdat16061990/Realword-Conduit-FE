@@ -1,0 +1,45 @@
+.register {
+  &-title {
+    font-size: 2.5rem;
+    font-weight: 500;
+    line-height: 1.1;
+    font-family: inherit;
+    color: inherit;
+  }
+
+  &-link {
+    display: block;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    font-family: "Source Sans Pro", sans-serif;
+    color: #5cb85c;
+    background-color: transparent;
+  }
+
+  .register-form-control.form-control {
+    padding: 0.75rem 1rem;
+  }
+
+  &-form {
+    &-btn {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      margin-top: 1rem;
+
+      .custom {
+        padding: 0.75rem 1.5rem;
+        font-size: 1.25rem;
+        border-radius: 0.3rem;
+        background-color: #5cb85c;
+        border-color: #5cb85c;
+        &:hover {
+          color: #fff;
+          background-color: #449d44;
+          border-color: #419641;
+        }
+      }
+    }
+  }
+}

@@ -25,5 +25,18 @@
   .nav-link.active {
     border-color: transparent;
   }
- 
+  .tabs-item {
+    
+  }
+
+}
+
+
+.tabs-container {
+  display:flex;
+  gap: 0 10px;
+  align-items: center;
+  .tabs-link {
+    border-bottom: 1px solid red;
+  }
 }
