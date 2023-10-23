@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { UserAndAuthService } from '../shared/user-and-auth.service';
+import { UserAndAuthService } from '../shared/services/user-and-auth.service';
 import { ToastrService } from 'ngx-toastr';
-
+import { RegisterBodyRequest } from '../shared/services/user-and-auth.service';
 import {
   FormControl,
   ReactiveFormsModule,
   FormGroup,
-  
   Validators,
 } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { TypedFormGroup } from '../shared/utils/typed-form-group';
 @Component({
   selector: 'app-register',
   standalone: true,
@@ -20,7 +20,7 @@ import { HttpClientModule } from '@angular/common/http';
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit {
-  readonly registerForm: any = new FormGroup({
+  registerForm: any = new FormGroup({
     email: new FormControl('', {
       nonNullable: true,
       validators: [Validators.email],

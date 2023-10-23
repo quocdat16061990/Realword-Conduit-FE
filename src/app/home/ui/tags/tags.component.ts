@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TagService } from 'src/app/shared/tag.service';
+import { TagService } from 'src/app/shared/services/tag.service';
 @Component({
   selector: 'app-tags',
   standalone: true,
@@ -10,11 +10,11 @@ import { TagService } from 'src/app/shared/tag.service';
 })
 export class TagsComponent implements OnInit {
   tags: any;
-  constructor(private tagsService: TagService){}
+  constructor(private tagsService: TagService) {}
   ngOnInit(): void {
-    this.tagsService.getTags().subscribe((data)=>{
-      this.tags = data
+    this.tagsService.getTags().subscribe((data) => {
+      this.tags = data;
       console.log(`this.tags`, this.tags);
-    })
+    });
   }
 }

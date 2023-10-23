@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import {
   ArticleService,
   ArticleGlobalQueryParams,
-} from 'src/app/shared/article.service';
+} from 'src/app/shared/services/article.service';
 @Component({
   selector: 'app-article-list',
   standalone: true,
@@ -13,7 +13,7 @@ import {
 })
 export class ArticleListComponent implements OnInit {
   articleData: any;
-  tags:any;
+  tags: any;
   constructor(private articleService: ArticleService) {}
   ngOnInit(): void {
     const queryParams: ArticleGlobalQueryParams = {
@@ -21,8 +21,8 @@ export class ArticleListComponent implements OnInit {
       offset: 0,
     };
     this.articleService.getArticleGlobal(queryParams).subscribe((data) => {
-      const {totalCount,items} = data;
-      this.articleData = items
+      const { totalCount, items } = data;
+      this.articleData = items;
     });
   }
 }

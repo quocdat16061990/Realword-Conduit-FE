@@ -9,7 +9,7 @@ import {
 } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
-import { UserAndAuthService } from '../shared/user-and-auth.service';
+import { UserAndAuthService } from '../shared/services/user-and-auth.service';
 
 @Component({
   selector: 'app-login',
@@ -21,7 +21,7 @@ import { UserAndAuthService } from '../shared/user-and-auth.service';
 export class LoginComponent implements OnInit {
   readonly loginForm: any = new FormGroup({
     username: new FormControl('', {
-      nonNullable: true
+      nonNullable: true,
     }),
     password: new FormControl('', {
       nonNullable: true,
