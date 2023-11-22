@@ -1,1 +1,57 @@
-<p>setting works!</p>
+<div class="container login">
+  <div class="row justify-content-center">
+    <div class="col-md-6 justify-center">
+      <h1 class="login-title text-center mb-4">Your Settings</h1>
+
+      <form [formGroup]="settingForm" class="login-form">
+        <div class="login-from-group form-group mb-3">
+          <input
+            type="text"
+            class="login-form-control form-control"
+            formControlName="username"
+            placeholder="Enter username"
+          />
+        </div>
+        <div class="login-from-group form-group mb-3">
+          <input
+            type="text"
+            class="login-form-control form-control"
+            formControlName="email"
+            placeholder="Enter email"
+          />
+        </div>
+        <div class="login-from-group form-group">
+          <input
+            type="text"
+            class="login-form-control form-control mb-3"
+            formControlName="description"
+            placeholder="Enter your descripton"
+          />
+        </div>
+        <div class="login-from-group form-group mb-3">
+          <input
+            type="email"
+            class="login-form-control form-control"
+            formControlName="image"
+            placeholder="Enter image"
+          />
+        </div>
+
+        <div class="login-form-btn">
+          <button
+            type="submit"
+            [disabled]="authStore.formStatus === 'pending'"
+            class="btn btn-primary custom"
+            (click)="handleUpdate()"
+          >
+            Update Settings
+          </button>
+        </div>
+      </form>
+      <hr />
+      <button class="btn btn-outline-danger" (click)="handleSubmit()">
+        Or click here to logout.
+      </button>
+    </div>
+  </div>
+</div>

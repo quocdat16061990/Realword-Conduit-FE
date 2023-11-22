@@ -1,0 +1,85 @@
+.article {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 1.5rem 0;
+  &-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 1rem 0;
+    &-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .top-content-link {
+        margin-right: 0.5rem;
+        .top-content-img {
+          border-radius: 50%;
+          object-fit: cover;
+        }
+      }
+      .top-content-info {
+        .content-info-link {
+          display: block;
+          font-weight: 500 !important;
+          color: #5cb85c;
+        }
+        .content-info-desc {
+          color: #bbb;
+          font-size: 0.8rem;
+          display: block;
+        }
+      }
+    }
+    &-tweets {
+      background-color: transparent;
+      border-color: #5cb85c;
+      color: #5cb85c;
+      background-image: none;
+      background-color: transparent;
+      
+    }
+  }
+  &-bottom {
+    &-link {
+      .article-title {
+        font-weight: 600;
+        font-family: "Source Sans Pro", sans-serif;
+        font-size: 1.5rem;
+        margin-bottom: 3px;
+        color: #000;
+      }
+      .article-desc {
+        font-family: "Source Sans Pro", sans-serif;
+        color: #999999;
+        margin-bottom: 15px;
+        font-size: 1rem;
+        line-height: 1.3rem;
+      }
+      .article-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .article-readmore {
+          max-width: 30%;
+          font-size: 0.8rem;
+          font-weight: 300;
+          color: #bbb;
+          vertical-align: middle;
+        }
+        .article-tagList {
+          display: flex;
+          &-item {
+            border: 1px solid #ddd;
+            color: #aaa !important;
+            background: none !important;
+            white-space: nowrap;
+            margin-right: 3px;
+            margin-bottom: 0.2rem;
+            padding: 0.6rem;
+            border-radius: 10rem;
+          }
+        }
+      }
+    }
+  }
+}

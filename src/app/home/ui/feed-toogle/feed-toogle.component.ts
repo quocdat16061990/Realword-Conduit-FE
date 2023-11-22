@@ -3,18 +3,20 @@ import {
   Input,
   Output,
   EventEmitter,
+  inject,
+  OnInit,
   ChangeDetectionStrategy,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
+
 import { NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
-import { ArticleListComponent } from '../article-list/article-list.component';
+import { ArticleListComponent } from '../../../shared/ui/article-list/article-list.component';
 export type TabItem = {
   link?: string;
   title: string;
 };
 
+import { AuthStore } from 'src/app/shared/store/auth';
 export enum TabType {
   Link,
   NoneLink,
@@ -27,14 +29,45 @@ export enum TabType {
   styleUrls: ['./feed-toogle.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FeedToogleComponent {
-  active = 1;
+export class FeedToogleComponent implements OnInit {
+  readonly #authStore = inject(AuthStore);
+  titleActive: string = '';
+  private _tabItems!: TabItem[];
+  @Input({ required: true })
+  set tabItems(v: TabItem[]) {
+    this._tabItems = v;
+    let tabItem = v.find((item) => item.title.startsWith('#'));
+    if (tabItem) {
+      this.handleToggle(tabItem.title);
+    }
+  }
 
-  tabs: TabItem[] = [
-    { title: 'Global Feed' }
- ];
+  get tabItems() {
+    return this._tabItems;
+  }
 
-  selectTab(tabId: number) {
-    this.active = tabId;
+  @Output() toggle = new EventEmitter<string>();
+  isAuthenticated: boolean = false;
+
+  ngOnInit(): void {
+    if (this.#authStore.getIsAuthenticated()) {
+      this.isAuthenticated = true;
+
+      this.handleToggle('Your Feed');
+      return;
+    }
+
+    this.handleToggle('Global Feed');
+  }
+
+  handleToggle(title: string) {
+    if (!title.startsWith('#')) {
+
+        this.tabItems = this.tabItems.filter(x=> !x.title.startsWith('#'))
+      }
+
+    this.toggle.emit(title);
+    this.titleActive = title;
   }
 }
+//  global feed 

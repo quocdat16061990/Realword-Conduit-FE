@@ -1,1 +1,20 @@
-<p>profile works!</p>
+<div class="profile-info">
+  <div class="container">
+    <div class="row">
+      <div class=" ">
+        <div class="profile-img">
+          <img
+            class="profile-img"
+            src="https://api.realworld.io/images/smiley-cyrus.jpeg"
+            alt=""
+          />
+        </div>
+
+        <h4 class="profile-title">quocdat11</h4>
+        <a class="profile-link" href="">Edit Profile Setting</a>
+      </div>
+      <app-feed-toogle (toggle)="onToggle($event)"> </app-feed-toogle>
+      <app-article-list [articles]="articleList"></app-article-list>
+    </div>
+  </div>
+</div>

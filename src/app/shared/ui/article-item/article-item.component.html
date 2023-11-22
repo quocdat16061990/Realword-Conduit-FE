@@ -1,4 +1,4 @@
-<div class="article" *ngFor="let article of articleData">
+<div class="article">
   <div class="article-top">
     <div class="article-top-content">
       <div class="top-content-link">
@@ -9,11 +9,18 @@
         />
       </div>
       <div class="top-content-info">
-        <a href="" class="content-info-link">{{ article.author.username }}</a>
-        <p class="content-info-desc">{{article.createdAt}}</p>
+        <a
+          [routerLink]="'/@' + article.author.username"
+          class="content-info-link"
+          >{{ article.author.username }}</a
+        >
+        <p class="content-info-desc">{{ article.createAt }}</p>
       </div>
     </div>
-    <button class="article-top-tweets btn btn-sm btn-outline-primary">
+    <button
+      class="article-top-tweets btn btn-sm btn-outline-primary"
+      (click)="onFavouriteClick()"
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         height="1em"
@@ -23,26 +30,31 @@
           svg {
             fill: #28d411;
           }
+          .article-top-tweets:hover svg {
+            fill: #ffffff;
+          }
         </style>
         <path
           d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"
         />
       </svg>
-      {{article.favoritesCount}}
+      {{ article.favoritesCount }}
     </button>
   </div>
   <div class="article-bottom">
-    <a class="article-bottom-link" href="">
+    <a class="article-bottom-link" [routerLink]="['/article/' + article.slug]">
       <h2 class="article-title">
-        {{article.contentArticle}}
+        {{ article.contentArticle }}
       </h2>
       <p class="article-desc">
-        {{article.description}}
+        {{ article.description }}
       </p>
       <div class="article-content">
         <span class="article-readmore">Read More...</span>
         <ul class="article-tagList">
-          <li class="article-tagList-item" *ngFor="let tag of article.tags" >{{tag}}</li>
+          <li class="article-tagList-item" *ngFor="let tag of article.tags">
+            {{ tag }}
+          </li>
         </ul>
       </div>
     </a>

@@ -1,0 +1,11 @@
+<div class="container p-0">
+  <ul class="nav-tabs">
+    <li
+      [ngClass]="{ active: item.title === titleActive }"
+      *ngFor="let item of articleTab"
+      (click)="handleToggle(item.title)"
+    >
+      {{ item.title }}
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,52 @@
+<div class="container login mt-4">
+  <div class="row justify-content-center">
+    <div class="col-md-10 justify-center">
+      <form
+        class="login-form"
+        [formGroup]="articleForm"
+        class="article-form"
+        (keydown.enter)="$event.preventDefault()"
+        (ngSubmit)="submit.emit(articleForm)"
+      >
+        <div class="login-from-group form-group mb-3">
+          <input
+            type="text"
+            class="login-form-control form-control"
+            formControlName="title"
+            placeholder="Article Title"
+          />
+        </div>
+        <div class="login-from-group form-group mb-3">
+          <input
+            type="text"
+            class="login-form-control form-control"
+            formControlName="description"
+            placeholder="What is article about"
+          />
+        </div>
+        <div class="login-from-group form-group">
+          <textarea
+            type="text"
+            class="login-form-control form-control mb-3"
+            formControlName="contentArticle"
+            placeholder="Write your article"
+          >
+          </textarea>
+        </div>
+        <div class="login-from-group form-group mb-3">
+          <input
+            type="text"
+            class="login-form-control form-control"
+            formControlName="tags"
+            placeholder="Enter tags"
+          />
+        </div>
+        <div class="login-form-btn">
+          <button type="submit" class="btn btn-primary custom">
+            {{ text }}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

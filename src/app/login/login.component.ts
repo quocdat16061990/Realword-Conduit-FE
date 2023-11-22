@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+
 import {
   FormGroup,
   ReactiveFormsModule,
@@ -10,7 +11,7 @@ import {
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 import { UserAndAuthService } from '../shared/services/user-and-auth.service';
-
+import { AuthStore } from '../shared/store/auth';
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -19,6 +20,7 @@ import { UserAndAuthService } from '../shared/services/user-and-auth.service';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
+  readonly #authStore = inject(AuthStore);
   readonly loginForm: any = new FormGroup({
     username: new FormControl('', {
       nonNullable: true,
@@ -29,16 +31,16 @@ export class LoginComponent implements OnInit {
   });
   constructor(
     private userService: UserAndAuthService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private router: Router
   ) {}
-  ngOnInit(): void {
-    console.log('On Init');
-  }
+  ngOnInit(): void {}
   handleSubmit() {
     this.userService.login(this.loginForm.value).subscribe({
-      next: (response) => {
+      next: () => {
+        this.#authStore.login(this.loginForm.value);
         this.toastr.success('Đăng Nhập Thành Công');
-        console.log(`response`, response);
+        this.router.navigate(['']);
       },
       error: (error) => {
         this.toastr.error(error?.error.message);

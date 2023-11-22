@@ -2,8 +2,12 @@
   <h3 class="tagList-title">Popular Tags</h3>
   <ul class="tagList-list">
     <li class="tagList-listItem" *ngFor="let tag of tags">
-      <a class="tagList-listItem-link" href="">{{tag}}</a>
+      <span
+        (click)="selectTag.emit(tag)"
+        class="tagList-listItem-link"
+        href=""
+        >{{ tag }}</span
+      >
     </li>
-
   </ul>
 </div>

@@ -1,18 +1,13 @@
 <header class="header container">
   <a href="#" class="header-logo"> Conduit </a>
   <ul class="header-information">
-    <li class="header-information-list">
-      <a class="header-information-list-link active" routerLink="register"
-        >Home</a
+    <li class="header-information-list" *ngFor="let item of menuItems">
+      <a
+        class="header-information-list-link active"
+        routerLink="{{ item.path }}"
       >
-    </li>
-    <li class="header-information-list">
-      <a class="header-information-list-link" routerLink="login">Sign In </a>
-    </li>
-    <li class="header-information-list">
-      <a class="header-information-list-link" routerLink="register" href=""
-        >Sing Up</a
-      >
+        {{ item.title }}
+      </a>
     </li>
   </ul>
 </header>

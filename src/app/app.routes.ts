@@ -23,10 +23,30 @@ export const appRoutes: Routes = [
       import('./home/home.component').then((m) => m.HomeComponent),
   },
   {
-    path: 'setting',
+    path: 'settings',
     loadComponent: () =>
       import('./setting/setting.component').then((m) => m.SettingComponent),
     title: 'Setting',
+    canMatch: [authGuard],
+  },
+  {
+    path: 'editor',
+    loadChildren: () => import('./editor/editor.routes'),
+    title: 'Editor',
+    canMatch: [authGuard],
+  },
+  {
+    path: 'article/:slug',
+    loadComponent: () =>
+      import('./article-detail/article-detail.component').then(
+        (m) => m.ArticleDetailComponent
+      ),
+  },
+  {
+    path: ':username',
+    loadComponent: () =>
+      import('./profile/profile.component').then((m) => m.ProfileComponent),
+    title: 'Profile',
     canMatch: [authGuard],
   },
 ];

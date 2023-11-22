@@ -12,9 +12,10 @@
   &-list {
     .tagList-listItem {
       display: inline-block;
-      
+
       &-link {
         background-color: #818a91;
+        cursor: pointer;
         color: #fff !important;
         font-size: 0.8rem;
         padding: 0.5rem;

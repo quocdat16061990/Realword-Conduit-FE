@@ -1,7 +1,7 @@
 import { Profile } from './profile.model';
 
 export interface CommentAPIResponse {
-  comment: Comment;
+  comments: Comment[];
 }
 export interface CommentListAPIResponse {
   comments: Comment[];

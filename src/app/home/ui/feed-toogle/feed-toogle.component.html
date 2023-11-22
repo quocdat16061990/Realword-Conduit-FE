@@ -1,17 +1,11 @@
-<div class="tabs-container">
-  <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+<div class="container p-0">
+  <ul class="nav-tabs">
     <li
-      class="tabs-item"
-      *ngFor="let tab of tabs; let idx = index"
-      [ngbNavItem]="idx + 1"
+      [ngClass]="{ active: item.title === titleActive }"
+      *ngFor="let item of tabItems"
+      (click)="handleToggle(item.title)"
     >
-      <a
-        class="tabs-item-link"
-        href="#"
-        ngbNavLink
-        (click)="selectTab(idx + 1)"
-        >{{ tab.title }}</a
-      >
+      {{ item.title }}
     </li>
   </ul>
 </div>

@@ -1,11 +1,15 @@
-export interface UserAPIResponse {
-  user: User;
-}
 export interface User {
   email: string;
-  token: string;
-  userName: string;
+  accessToken: string;
+  username: string;
   password: string;
+  image: string;
+  description: string;
+  isFollowed: boolean;
+}
+export interface UpdateBodyRequest {
+  email: string;
+  username: string;
   image: string;
   description: string;
 }

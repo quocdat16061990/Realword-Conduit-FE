@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TagService } from 'src/app/shared/services/tag.service';
 @Component({
@@ -11,10 +11,10 @@ import { TagService } from 'src/app/shared/services/tag.service';
 export class TagsComponent implements OnInit {
   tags: any;
   constructor(private tagsService: TagService) {}
+  @Output() selectTag = new EventEmitter<string>();
   ngOnInit(): void {
     this.tagsService.getTags().subscribe((data) => {
       this.tags = data;
-      console.log(`this.tags`, this.tags);
     });
   }
 }

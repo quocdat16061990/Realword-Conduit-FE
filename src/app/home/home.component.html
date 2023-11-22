@@ -5,11 +5,15 @@
 <div class="container">
   <div class="news-feed row">
     <div class="col-9">
-      <app-feed-toogle></app-feed-toogle>
-      <app-article-list></app-article-list>
+      <app-feed-toogle (toggle)="onToggle($event)" [tabItems]="tabItems">
+      </app-feed-toogle>
+      <app-article-list
+        [articles]="articleList"
+        (favouriteClick)="onFavouriteClick($event)"
+      ></app-article-list>
     </div>
     <div class="col-3">
-      <app-tags></app-tags>
+      <app-tags (selectTag)="selectTag($event)"></app-tags>
     </div>
   </div>
 </div>
