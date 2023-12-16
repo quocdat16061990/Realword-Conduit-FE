@@ -55,7 +55,7 @@ export class ArticleService {
   updateArticle(slug: string, body: any): Observable<ArticleAPIResponse> {
     return this.#httpClient.put<ArticleAPIResponse>(
       `${this.appConfig.apiURL}/article/${slug}`,
-      { body }
+      body
     );
   }
   favouriteArticle(slug: string): Observable<ArticleAPIResponse> {

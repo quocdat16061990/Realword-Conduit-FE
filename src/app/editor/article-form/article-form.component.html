@@ -4,9 +4,8 @@
       <form
         class="login-form"
         [formGroup]="articleForm"
-        class="article-form"
         (keydown.enter)="$event.preventDefault()"
-        (ngSubmit)="submit.emit(articleForm)"
+        (ngSubmit)="submitForm.emit(articleForm.getRawValue())"
       >
         <div class="login-from-group form-group mb-3">
           <input

@@ -4,9 +4,8 @@ import { ArticleFormComponent } from '../article-form/article-form.component';
 import { Subject } from 'rxjs';
 import { ArticleService } from 'src/app/shared/services';
 import { ToastrService } from 'ngx-toastr';
-import { Article } from 'src/app/shared/models';
 import { ActivatedRoute } from '@angular/router';
-import { ViewChild } from '@angular/core';
+import { ArticleAPIRequest } from 'src/app/shared/models';
 @Component({
   selector: 'app-edit-article',
   standalone: true,
@@ -18,10 +17,10 @@ export class EditArticleComponent implements OnInit {
   readonly destroySubject$ = new Subject<void>();
   readonly #articleService = inject(ArticleService);
   readonly #toastr = inject(ToastrService);
-  @ViewChild(ArticleFormComponent) articleFormComponent!: ArticleFormComponent;
-  articleItem: any = {};
   slug: string = '';
   author!: string;
+  articleItem: any = {};
+
   constructor(private route: ActivatedRoute) {}
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
@@ -30,32 +29,17 @@ export class EditArticleComponent implements OnInit {
       this.getArticleBySlug(this.slug);
     });
   }
-
   getArticleBySlug(slug: string) {
-    this.#articleService.getArticleSlug(slug).subscribe((data: Article) => {
+    this.#articleService.getArticleSlug(slug).subscribe((data: any) => {
       this.author = data?.author?.username;
 
       this.articleItem = data;
     });
   }
-  submit(event: any) {
-    const slug = this.slug;
+  submitForm(formValue: ArticleAPIRequest) {
     const formData = {
-      ...this.articleFormComponent.articleForm.getRawValue(),
-      title: this.articleItem.title,
-      contentArticle: this.articleItem.contentArticle,
-      description: this.articleItem.description,
-      tags: this.articleItem.tags,
+      ...formValue,
     };
-    this.#articleService.updateArticle(formData, slug).subscribe({
-      next: (res) => {
-        console.log(res);
-        this.#toastr.success('Update bài viết thành công');
-      },
-      error: (err) => {
-        console.log(err);
-        this.#toastr.error('Không thể update bài viết');
-      },
-    });
+    console.log('formData: ', formData);
   }
 }

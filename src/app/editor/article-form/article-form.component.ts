@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./article-form.component.scss'],
   standalone: true,
 })
-export class ArticleFormComponent implements OnInit {
+export class ArticleFormComponent {
   readonly articleForm: FormGroup = new FormGroup({
     title: new FormControl('', {
       nonNullable: true,
@@ -25,7 +25,6 @@ export class ArticleFormComponent implements OnInit {
       nonNullable: true,
     }),
   });
-
   @Input({ required: true }) text!: string;
   @Input() set article(value: Article) {
     if (value?.title) {
@@ -37,11 +36,5 @@ export class ArticleFormComponent implements OnInit {
       });
     }
   }
-  @Output() submit = new EventEmitter<TypedFormGroup<ArticleAPIRequest>>();
-
-  ngOnInit() {}
-
-  onSubmit() {
-    this.submit.emit(this.articleForm.getRawValue());
-  }
+  @Output() submitForm = new EventEmitter<ArticleAPIRequest>();
 }

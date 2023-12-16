@@ -6,6 +6,8 @@ import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { ArticleService } from 'src/app/shared/services';
 import { ToastrService } from 'ngx-toastr';
 import { ViewChild } from '@angular/core';
+import { Article, ArticleAPIRequest } from 'src/app/shared/models';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-new-article',
@@ -15,33 +17,32 @@ import { ViewChild } from '@angular/core';
   styleUrls: ['./new-article.component.scss'],
 })
 export class NewArticleComponent implements OnInit {
-  readonly destroySubject$ = new Subject<void>();
   readonly #articleService = inject(ArticleService);
   readonly #toastr = inject(ToastrService);
-  @ViewChild(ArticleFormComponent) articleFormComponent!: ArticleFormComponent;
-  ngOnInit(): void {}
-  ngOnDestroy(): void {
-    this.destroySubject$.next();
-  }
 
-  submit(event: any) {
+  articleItem!: Article;
+
+  constructor(private route: ActivatedRoute) {}
+  ngOnInit(): void {}
+
+  submitForm(formValue: ArticleAPIRequest) {
     const tags =
-      this.articleFormComponent.articleForm
-        .get('tags')
-        ?.value.split(',')
-        .map((tag: any) => tag.trim()) || [];
+      typeof formValue.tags === 'string'
+        ? (formValue.tags as string).split(',').map((tag: string) => tag.trim())
+        : [];
+
     const formData = {
-      ...this.articleFormComponent.articleForm.getRawValue(),
-      tags: tags,
+      ...formValue,
+      tags,
     };
+    console.log('formData: ', formData);
+
     this.#articleService.postArticle(formData).subscribe({
       next: (res) => {
-        console.log(res);
         this.#toastr.success('Đăng bài viết thành công');
       },
       error: (err) => {
-        console.log(err)
-        this.#toastr.error('Không thể đăng bài viết');
+        this.#toastr.error('Không đăng bài viết thành công');
       },
     });
   }
